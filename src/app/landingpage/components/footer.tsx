@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {

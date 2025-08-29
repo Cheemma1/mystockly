@@ -151,8 +151,9 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-6 px-6 ">
           <div className="bg-white p-6 rounded-xl shadow-md">
             <p className="text-gray-600 text-sm mb-4">
-              "Mystockly helped me organize my WhatsApp business. Now I know
-              exactly who my best customers are and when to follow up!"
+              &quot; Mystockly helped me organize my WhatsApp business. Now I
+              know exactly who my best customers are and when to follow
+              up!&quot;
             </p>
             <div className="flex items-center">
               <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
@@ -162,15 +163,15 @@ export default function Home() {
                 <p className="font-semibold text-gray-900 text-sm">
                   Adaora Okafor
                 </p>
-                <p className="text-gray-500 text-xs">Fashion Vendor, Onitsha</p>
+                <p className="text-gray-500 text-xs">Fashion Vendor,Onitsha</p>
               </div>
             </div>
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-md">
             <p className="text-gray-600 text-sm mb-4">
-              "The AI message feature is amazing! It helps me create
-              professional follow-ups that actually get responses."
+              &quot; The AI message feature is amazing! It helps me create
+              professional follow-ups that actually get responses.&quot;
             </p>
             <div className="flex items-center">
               <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
@@ -180,7 +181,7 @@ export default function Home() {
                 <p className="font-semibold text-gray-900 text-sm">
                   Chioma Udeh
                 </p>
-                <p className="text-gray-500 text-xs">Beauty Products, Lagos</p>
+                <p className="text-gray-500 text-xs">Beauty Products , Lagos</p>
               </div>
             </div>
           </div>
@@ -188,8 +189,9 @@ export default function Home() {
           <div className="bg-white p-6 rounded-xl shadow-md">
             <div className="flex mb-3"></div>
             <p className="text-gray-600 text-sm mb-4">
-              "My sales increased by 40% after using BizKitNG for just 2 months.
-              The analytics helped me understand my business better."
+              &quot; My sales increased by 40% after using BizKitNG for just 2
+              months. The analytics helped me understand my business
+              better.&quot;
             </p>
             <div className="flex items-center">
               <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
