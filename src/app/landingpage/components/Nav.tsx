@@ -1,21 +1,22 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { List, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function Nav() {
   const sections = [
     { navTitle: "Features", links: "#features" },
-    { navTitle: "How-It-Works", links: "#how-it-works" },
+
     { navTitle: "Pricing", links: "#pricing" },
+    { navTitle: "FAQ", links: "#faq" },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex items-center justify-between p-6 ">
       <div className="text-2xl font-bold text-gray-900">
-        My<span className="text-green-600">Stockly</span>
+        My<span className="text-blue">Stockly</span>
       </div>
 
       <div className="hidden md:flex items-center gap-4 ">
@@ -23,7 +24,7 @@ export default function Nav() {
           <Link
             href={item.links}
             key={item.navTitle}
-            className="text-base hover:text-green-600 text-gray-600"
+            className="text-base hover:text-blue text-gray-600"
           >
             {item.navTitle}
           </Link>
@@ -31,12 +32,12 @@ export default function Nav() {
 
         <Button
           variant="outline"
-          className="text-green-600 border-green-600 cursor-pointer"
+          className="text-blue border-blue cursor-pointer"
         >
           Login
         </Button>
 
-        <Button className="text-white border-green-600 cursor-pointer bg-green-600">
+        <Button className="text-white border-blue cursor-pointer bg-blue">
           SignUp
         </Button>
       </div>
@@ -46,7 +47,7 @@ export default function Nav() {
         onClick={() => setIsOpen(!isOpen)}
       />
       {isOpen && (
-        <div className="flex md:hidden gap-10 flex-col  bg-white absolute  left-0   top-0 w-[300px] h-full  pt-8 px-6  z-50 ">
+        <div className="flex md:hidden gap-10 flex-col  bg-white fixed left-0   top-0 w-[300px]   pt-8 bottom-0 px-6  insert-0 h-svh ">
           <X
             onClick={() => setIsOpen(!isOpen)}
             className="absolute right-4 top- 0 cursor-pointer"
@@ -56,7 +57,7 @@ export default function Nav() {
               <Link
                 href={item.links}
                 key={item.navTitle}
-                className="text-base hover:text-green-600 text-gray-600"
+                className="text-base hover:text-blue text-gray-600"
               >
                 {item.navTitle}
               </Link>
@@ -64,12 +65,12 @@ export default function Nav() {
 
             <Button
               variant="outline"
-              className="text-green-600 border-green-600 cursor-pointer"
+              className="text-blue border-blue cursor-pointer"
             >
               Login
             </Button>
 
-            <Button className="text-white border-green-600 cursor-pointer bg-green-600">
+            <Button className="text-white border-blue cursor-pointer bg-blue">
               SignUp
             </Button>
           </div>

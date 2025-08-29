@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Nav from "./landingpage/components/Nav";
+import Footer from "./landingpage/components/footer";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -26,10 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable}  ${plusJakartaSans.variable} min-h-screen bg-gradient-to-br from-green-50 to-orange-50 antialiased`}
+        className={`${montserrat.variable}  ${plusJakartaSans.variable} min-h-screen bg-ccc antialiased`}
       >
         <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );
