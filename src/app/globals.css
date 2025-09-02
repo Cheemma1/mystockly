@@ -18,7 +18,7 @@ body {
   /* --color-ccc: #e5e7eb; */
   --color-ccc: #f9fafb;
 
-  --color-blue: #4f46e5;
+  /* --color-blue: #4f46e5; */
 }
 
 @custom-variant dark (&:is(.dark *));
