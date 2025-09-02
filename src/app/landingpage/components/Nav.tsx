@@ -20,7 +20,7 @@ export default function Nav() {
   return (
     <div className="flex items-center justify-between p-6 fixed top-0 right-0 left-0 z-50 bg-white shadow-md">
       <Link className="text-2xl font-bold text-gray-900 " href="/">
-        My<span className="text-blue">Stockly</span>
+        My<span className="text-blue-600">Stockly</span>
       </Link>
 
       <div className="hidden md:flex items-center gap-4 ">
@@ -36,14 +36,14 @@ export default function Nav() {
 
         <Button
           variant="outline"
-          className="text-blue border-blue cursor-pointer"
+          className="text-blue-600 border-blue-600 cursor-pointer"
           onClick={() => router.push("/login")}
         >
           Login
         </Button>
 
         <Button
-          className="text-white border-blue cursor-pointer bg-blue"
+          className="text-white border-blue-600 cursor-pointer bg-blue-600"
           onClick={() => router.push("/signup")}
         >
           SignUp
@@ -73,14 +73,14 @@ export default function Nav() {
 
             <Button
               variant="outline"
-              className="text-blue border-blue cursor-pointer"
+              className="text-blue border-blue-600 cursor-pointer"
               onClick={() => router.push("/login")}
             >
               Login
             </Button>
 
             <Button
-              className="text-white border-blue cursor-pointer bg-blue"
+              className="text-white border-blue-600 cursor-pointer bg-blue-600"
               onClick={() => router.push("/signup")}
             >
               SignUp

@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="text-2xl font-bold mb-4">
-              My<span className="text-blue">Stockly</span>
+              My<span className="text-blue-600">Stockly</span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md text-base">
               Empowering entrepreneurs with modern tools to track sales, manage
@@ -27,7 +27,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-blue transition-colors text-base"
+                  className="text-gray-300 hover:text-blue-600 transition-colors text-base"
                 >
                   Features
                 </a>
@@ -35,7 +35,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#pricing"
-                  className="text-gray-300 hover:text-blue  transition-colors text-base"
+                  className="text-gray-300 hover:text-blue-600  transition-colors text-base"
                 >
                   Pricing
                 </a>
@@ -50,7 +50,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-blue transition-colors text-base"
+                  className="text-gray-300 hover:text-blue-600 transition-colors text-base"
                 >
                   Help Center
                 </a>
@@ -58,7 +58,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-blue transition-colors tet-base"
+                  className="text-gray-300 hover:text-blue-600 transition-colors tet-base"
                 >
                   Contact Us
                 </a>
@@ -66,7 +66,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-blue transition-colors text-base"
+                  className="text-gray-300 hover:text-blue-600 transition-colors text-base"
                 >
                   Privacy Policy
                 </a>
@@ -74,7 +74,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-blue transition-colors text-base"
+                  className="text-gray-300 hover:text-blue-600 transition-colors text-base"
                 >
                   Terms of Service
                 </a>

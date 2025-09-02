@@ -15,18 +15,17 @@ export default function Home() {
         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
           Track Sales.
           <br />
-          <span className="text-blue">Boost Sales.</span>
+          <span className="text-blue-600">Boost Sales.</span>
         </h1>
         <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
           The modern business tool for entrepreneurs. Manage customers, track
-          sales,and grow your WhatsApp/Instagram business with AI-powered
-          insights.
+          sales,and grow your business with AI-powered insights.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
           <Button
             size="lg"
-            className="bg-blue hover:bg-blue text-white px-8 py-4 text-lg cursor-pointer"
+            className="bg-blue-600 hover:bg-blue-600 text-white px-8 py-4 text-lg cursor-pointer"
           >
             Start Free Trial
             <ArrowRight className="ml-2 h-5 w-5" />
@@ -47,14 +46,14 @@ export default function Home() {
             Why Stockly Stands Out
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto text-center">
-            Stockly simplifies customer management, sales tracking, and AI
+            MyStockly simplifies customer management, sales tracking, and AI
             messaging in one place. Gain insights, save time, and grow your
             business faster.
           </p>
         </div>
         <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-8 px-6 py-12">
           <div className="bg-ccc shadow-md hover:shadow-lg transition-shadow p-6 ">
-            <Users className="h-10 w-10 text-blue mb-4 " />
+            <Users className="h-10 w-10 text-blue-600 mb-4 " />
             <h3 className="font-semibold text-gray-900 mb-2">
               Customer Management
             </h3>
@@ -229,33 +228,33 @@ export default function Home() {
             </div>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
-                Up to 1000 customers
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
+                Up to 100 customers
               </li>
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
                 Basic sales tracking
               </li>
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
-                10 AI messages/month
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />5 AI
+                messages/month
               </li>
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
                 Order form
               </li>
             </ul>
             <Button
               variant="outline"
-              className="w-full border-blue text-blue hover:bg-ccc"
+              className="w-full border-blue-600 text-blue-600 hover:bg-ccc cursor-pointer"
             >
               Choose Starter
             </Button>
           </div>
 
-          <div className="bg-ccc p-6 rounded-xl shadow-lg border-2 border-blue relative">
+          <div className="bg-ccc p-6 rounded-xl shadow-lg border-2 border-blue-600 relative">
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-              <span className="bg-blue text-white text-xs font-bold px-3 py-1 rounded-full">
+              <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
                 POPULAR
               </span>
             </div>
@@ -269,27 +268,27 @@ export default function Home() {
             </div>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
-                Up to 3,000 customers
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
+                Up to 1,000 customers
               </li>
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
                 Advanced analytics
               </li>
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
                 Unlimited AI messages
               </li>
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
-                Multiple order forms
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />5 order
+                forms
               </li>
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
                 WhatsApp integration
               </li>
             </ul>
-            <Button className="w-full bgblue hover:bg-blue-700 text-white">
+            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white cursor-pointer">
               Choose Pro
             </Button>
           </div>
@@ -305,29 +304,29 @@ export default function Home() {
             </div>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
                 Unlimited customers
               </li>
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
                 Advanced AI features
               </li>
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
                 Priority support
               </li>
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
-                Custom branding
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
+                Unlimited Order Form
               </li>
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue mr-2" />
-                API access
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
+                WhatsApp integration
               </li>
             </ul>
             <Button
               variant="outline"
-              className="w-full border-blue text-blue hover:bg-ccc"
+              className="w-full border-blue-600 text-blue-600 hover:bg-ccc cursor-pointer"
             >
               Choose Enterprise
             </Button>
