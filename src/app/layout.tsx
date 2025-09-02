@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${montserrat.variable}  ${plusJakartaSans.variable} min-h-screen bg-ccc antialiased`}
       >
         <Nav />
-        {children}
+        <div className="pt-16">{children}</div>
         <Footer />
       </body>
     </html>

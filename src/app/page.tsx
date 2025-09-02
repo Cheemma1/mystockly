@@ -156,8 +156,8 @@ export default function Home() {
               up!&quot;
             </p>
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                <span className="text-blue font-bold text-sm">AO</span>
+              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-blue-500 font-bold text-sm">AO</span>
               </div>
               <div className="ml-3">
                 <p className="font-semibold text-gray-900 text-sm">
@@ -174,8 +174,8 @@ export default function Home() {
               professional follow-ups that actually get responses.&quot;
             </p>
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
-                <span className="text-orange-500 font-bold text-sm">CU</span>
+              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-blue-500 font-bold text-sm">CU</span>
               </div>
               <div className="ml-3">
                 <p className="font-semibold text-gray-900 text-sm">
@@ -189,7 +189,7 @@ export default function Home() {
           <div className="bg-white p-6 rounded-xl shadow-md">
             <div className="flex mb-3"></div>
             <p className="text-gray-600 text-sm mb-4">
-              &quot; My sales increased by 40% after using BizKitNG for just 2
+              &quot; My sales increased by 40% after using Mystockly for just 2
               months. The analytics helped me understand my business
               better.&quot;
             </p>

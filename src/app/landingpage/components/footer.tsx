@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="text-2xl font-bold mb-4">
               My<span className="text-blue">Stockly</span>
             </div>
-            <p className="text-gray-300 mb-6 max-w-md">
+            <p className="text-gray-300 mb-6 max-w-md text-base">
               Empowering entrepreneurs with modern tools to track sales, manage
               customers, and grow their WhatsApp/Instagram businesses.
             </p>
@@ -23,19 +23,19 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="font-semibold text-lg mb-4">Product</h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2 ">
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-blue transition-colors"
+                  className="text-gray-300 hover:text-blue transition-colors text-base"
                 >
                   Features
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="text-gray-300 hover:text-blue  transition-colors"
+                  href="#pricing"
+                  className="text-gray-300 hover:text-blue  transition-colors text-base"
                 >
                   Pricing
                 </a>
@@ -50,7 +50,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-blue transition-colors"
+                  className="text-gray-300 hover:text-blue transition-colors text-base"
                 >
                   Help Center
                 </a>
@@ -58,7 +58,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-blue transition-colors"
+                  className="text-gray-300 hover:text-blue transition-colors tet-base"
                 >
                   Contact Us
                 </a>
@@ -66,7 +66,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-blue transition-colors"
+                  className="text-gray-300 hover:text-blue transition-colors text-base"
                 >
                   Privacy Policy
                 </a>
@@ -74,7 +74,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-blue transition-colors"
+                  className="text-gray-300 hover:text-blue transition-colors text-base"
                 >
                   Terms of Service
                 </a>
