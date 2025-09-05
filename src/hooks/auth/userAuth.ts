@@ -3,6 +3,7 @@ import { getQueryClient } from "@/lib/reactQueryClient";
 import { useStore } from "@/store/useAuthstore";
 import { supabase } from "@/utils/supabase/client";
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 export const useSignUpMutation = () => {
   const setUser = useStore((s) => s.setUser);
@@ -32,7 +33,9 @@ export const useSignUpMutation = () => {
 };
 
 // login
+
 export function useLoginMutation() {
+  const router = useRouter();
   const setUser = useStore((s) => s.setUser);
   const queryClient = getQueryClient();
   return useMutation({
@@ -52,6 +55,10 @@ export function useLoginMutation() {
     },
     onSuccess: (user) => {
       setUser(user ?? null);
+      console.log("✅ LOGIN SUCCESS:", user);
+
+      router.push("/dashboard");
+
       queryClient.invalidateQueries({ queryKey: ["currentUser"] });
     },
   });
