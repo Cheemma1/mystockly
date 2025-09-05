@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,27 +6,55 @@ import { useState } from "react";
 
 import { Label } from "@/components/ui/label";
 import { Eye, EyeOff } from "lucide-react";
+import { useSignUpMutation } from "@/hooks/auth/userAuth";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function SignupPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
+  const [businessName, setBusinessName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const { mutate: SignUp, isPending, error } = useSignUpMutation();
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    SignUp(
+      { email, password, businessName },
+      {
+        onSuccess: () => {
+          toast.success("Account created successfully! check your email.");
+          router.push("/dashboard");
+        },
+        onError: (error) => {
+          toast.error(error?.message || "Something went wrong");
+        },
+      }
+    );
   };
   return (
     <AuthLayout>
       <form onSubmit={handleSignup} className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="business-name">Business Name</Label>
-          <Input id="business-name" placeholder="Your Business Name" required />
+          <Input
+            id="business-name"
+            placeholder="Your Business Name"
+            value={businessName}
+            onChange={(e) => setBusinessName(e.target.value)}
+            required
+          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="signup-email">Email</Label>
           <Input
             id="signup-email"
             type="email"
-            placeholder="your.email@example.com"
+            placeholder="m@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -38,6 +65,8 @@ export default function SignupPage() {
               id="signup-password"
               type={showPassword ? "text" : "password"}
               placeholder="Create a password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
             <Button
@@ -58,10 +87,11 @@ export default function SignupPage() {
         <Button
           type="submit"
           className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer"
-          disabled={isLoading}
+          disabled={isPending}
         >
-          {isLoading ? "Creating Account..." : "Create Account"}
+          {isPending ? "Creating Account..." : "Create Account"}
         </Button>
+        {error && <p className="text-red-500">{error.message}</p>}
       </form>
 
       <div className="flex items-center gap-2 my-4 px-6">

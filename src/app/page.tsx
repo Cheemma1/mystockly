@@ -7,12 +7,15 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
+import Nav from "./landingpage/components/Nav";
+import Footer from "./landingpage/components/footer";
 
 export default function Home() {
   return (
     <main className="">
+      <Nav />
       <header className="container mx-auto px-4 py-16 text-center ">
-        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 mt-20">
           Track Sales.
           <br />
           <span className="text-blue-600">Boost Sales.</span>
@@ -87,55 +90,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* How It Works Section */}
-      {/* <section className="mt-24 px-4 md:px-0" id="how-it-works">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">
-          How It Works
-        </h2>
-        <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto text-center">
-          Get started in just 3 simple steps and transform your business today
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-blue font-bold text-xl">1</span>
-            </div>
-            <h3 className="font-semibold text-gray-900 mb-2">
-              Add Your Customers
-            </h3>
-            <p className="text-gray-600 text-sm">
-              Import or manually add customer details with WhatsApp numbers and
-              order history
-            </p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-orange-500 font-bold text-xl">2</span>
-            </div>
-            <h3 className="font-semibold text-gray-900 mb-2">
-              Track Your Sales
-            </h3>
-            <p className="text-gray-600 text-sm">
-              Record daily sales, track revenue, and monitor your business
-              growth
-            </p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-blue-500 font-bold text-xl">3</span>
-            </div>
-            <h3 className="font-semibold text-gray-900 mb-2">Grow with AI</h3>
-            <p className="text-gray-600 text-sm">
-              Use AI to create follow-up messages and boost your customer
-              engagement
-            </p>
-          </div>
-        </div>
-      </section> */}
 
       <section className="mt-24">
         <div className="px-4 md:px-0 text-center">
@@ -333,6 +287,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }
