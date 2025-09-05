@@ -13,15 +13,11 @@ export default function AuthLayout({
   return (
     <div className="min-h-screen flex flex-col bg-ccc">
       {/* Main content */}
-      <main className="flex-grow flex flex-col items-center justify-center px-4 mt-6 pt-16">
-        <p className="text-gray-600 mb-2 text-1xl">
-          Grow your business, boost your Sales
-        </p>
-
+      <main className="flex-grow flex flex-col items-center justify-center px-4  pt-16 mb-6">
         {/* Card */}
         <Card className="shadow-xl w-full max-w-md px-6 py-4">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Welcome Back!</CardTitle>
+            <CardTitle className="text-2xl">Welcome!</CardTitle>
             <CardDescription>
               Ready to track those sales and boost your business?
             </CardDescription>
@@ -29,7 +25,7 @@ export default function AuthLayout({
 
           {children}
 
-          <p className="text-center text-sm text-gray-600 mt-6">
+          <p className="text-center text-sm text-gray-600 mt-4">
             Join thousands of entrepreneurs growing their business with{" "}
             <span className="font-semibold">MyStockly</span>
           </p>
