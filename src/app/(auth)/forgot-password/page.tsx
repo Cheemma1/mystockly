@@ -14,10 +14,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useForgotPaswordMutation } from "@/hooks/auth/userAuth";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 
 const ForgotPasswordPage = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const { mutate: forgot, isPending } = useForgotPaswordMutation();
   const handleForgotPassword = async (e: React.FormEvent) => {
@@ -28,7 +27,7 @@ const ForgotPasswordPage = () => {
       {
         onSuccess: () => {
           toast.success("Reset email sent successfully!");
-          router.push("/update-password");
+          // router.push("/update-password");
         },
         onError: (error) => {
           toast.error(error?.message || "Something went wrong");
