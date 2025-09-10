@@ -1,0 +1,5 @@
+export interface IUserSignUp {
+  email: string;
+  password: string;
+  businessName: string;
+}

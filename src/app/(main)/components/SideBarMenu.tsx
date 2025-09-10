@@ -12,6 +12,8 @@ import {
   Home,
   LogOut,
   Settings,
+  Package,
+  ShoppingCart,
 } from "lucide-react";
 import { useStore } from "@/store/useAuthstore";
 
@@ -39,7 +41,10 @@ const SidebarContent = ({ getIni, setIsOpen }: SidebarContentProps) => {
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: Home, path: "/dashboard" },
     { id: "customers", label: "Customers", icon: Users, path: "/customers" },
+    { id: "products", label: "Products", icon: Package, path: "/products" },
+    { id: "orders", label: "Orders", icon: ShoppingCart, path: "/orders" },
     { id: "sales", label: "Sales", icon: TrendingUp, path: "/sales" },
+
     {
       id: "templates",
       label: "Templates",
