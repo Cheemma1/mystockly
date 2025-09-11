@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import { Users, TrendingUp, DollarSign, ShoppingBag } from "lucide-react";
 import {
   Card,
@@ -86,7 +86,7 @@ const DashboardPage = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className=" text-2xl md:text-3xl font-bold ">Welcome back! 👋</h1>
+        <h1 className=" text-2xl md:text-3xl font-bold ">Welcome back! </h1>
         <p className="mt-1">
           Here&apos;s what&apos; happening in your business today.
         </p>
