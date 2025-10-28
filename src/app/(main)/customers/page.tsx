@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -10,6 +9,7 @@ import AddCustomerModal from "./component/AddCustomerModal";
 import {
   Dialog,
   DialogContent,
+  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -21,15 +21,18 @@ import { Button } from "@/components/ui/button";
 import CustomerStats from "./component/CustomerStats";
 import CustomersTable from "./component/CustomersTable";
 import DeleteCustomerModal from "./component/DeleteCustomerModal";
+import EditModal from "./component/EditModal";
 
 const CustomersPage = () => {
   const [IsAddCustomer, setIsAddCustomer] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [hasSearched, setHasSearched] = useState(false);
   const [isDelete, setIsDelete] = useState<Customer | null>(null);
-  const [isEdit, setIsEdit] = useState<Customer | null>(null);
-  const [openSendMessageModal, setOpenSendMessageModal] =
-    useState<Customer | null>(null);
+  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(
+    null
+  );
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const [filteredCustomers, setFilteredCustomers] = useState<Customer[]>([]);
 
@@ -68,6 +71,12 @@ const CustomersPage = () => {
     );
 
     setFilteredCustomers(result);
+  };
+
+  // 🔹 Called when "Edit" is clicked from the table
+  const handleEditClick = (customer: Customer) => {
+    setSelectedCustomer(customer);
+    setIsDialogOpen(true);
   };
 
   return (
@@ -122,14 +131,13 @@ const CustomersPage = () => {
               </Button>
             </div>
 
-            <div className=" max-w-[300px] border border-red-500">
+            <div className=" ">
               <CustomersTable
                 customers={
                   filteredCustomers.length ? filteredCustomers : customers
                 }
                 onDeleteClick={(customer) => setIsDelete(customer)}
-                onEditClick={(customer) => setIsEdit(customer)}
-                onSendMessage={(customer) => setOpenSendMessageModal(customer)}
+                onEditClick={handleEditClick}
               />
             </div>
           </>
@@ -148,6 +156,21 @@ const CustomersPage = () => {
             customer={isDelete}
             closeModal={() => setIsDelete(null)}
           />
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Edit Customer</DialogTitle>
+          </DialogHeader>
+
+          {selectedCustomer && (
+            <EditModal
+              customerId={selectedCustomer.id}
+              closeModal={() => setIsDialogOpen(false)}
+            />
+          )}
         </DialogContent>
       </Dialog>
     </div>

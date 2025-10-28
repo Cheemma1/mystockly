@@ -19,7 +19,7 @@ const fetchCustomers = async (userId: string): Promise<Customer[]> => {
   } catch (error: any) {
     console.error("Error fetching customers:", error);
     toast.error(error.message || "Error fetching customers");
-    throw error; // let react-query handle error state
+    throw error;
   }
 };
 
@@ -75,5 +75,72 @@ export const useAddCustomerMutation = () => {
     isAdding: mutation.isPending,
     error: mutation.error,
     isSuccess: mutation.isSuccess,
+  };
+};
+
+//  Update customer
+export const useUpdateCustomerMutation = () => {
+  const user = useStore((s) => s.user);
+  const queryClient = getQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: async (params: {
+      id: string;
+      data: Partial<
+        Omit<Customer, "id" | "user_id" | "created_at" | "updated_at">
+      >;
+    }) => {
+      const { id, data } = params;
+      const { data: updated, error } = await supabase
+        .from("customers")
+        .update(data)
+        .eq("id", id)
+        .select()
+        .single();
+
+      if (error) throw error;
+      return updated;
+    },
+    onSuccess: () => {
+      toast.success("Successfully updated!");
+      queryClient.invalidateQueries({ queryKey: ["customers", user?.id] });
+    },
+    onError: (err: any) => {
+      toast.error(err.message || "failed to update customer");
+    },
+  });
+
+  return {
+    updateCustomer: mutation.mutate,
+    isUpdating: mutation.isPending,
+    error: mutation.error,
+    isSuccess: mutation.isSuccess,
+  };
+};
+
+// delete customer
+export const useDeleteCustomerMutation = () => {
+  const user = useStore((s) => s.user);
+  const queryClient = getQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("customers").delete().eq("id", id);
+      if (error) throw error;
+      return id;
+    },
+
+    onSuccess: () => {
+      toast.success("Successfully deleted!");
+      queryClient.invalidateQueries({ queryKey: ["customers", user?.id] });
+    },
+    onError: (err: any) => {
+      toast.error(err.message || "failed to delete customer");
+    },
+  });
+
+  return {
+    deleteCustomer: mutation.mutate,
+    isDeleting: mutation.isPending,
   };
 };

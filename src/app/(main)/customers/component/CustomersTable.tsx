@@ -13,14 +13,12 @@ interface CustomersProps {
   customers: Customer[];
   onDeleteClick: (c: Customer) => void;
   onEditClick: (c: Customer) => void;
-  onSendMessage: (c: Customer) => void;
 }
 
 const CustomersTable = ({
   customers,
   onDeleteClick,
   onEditClick,
-  onSendMessage,
 }: CustomersProps) => {
   const getInitials = (name: string) => {
     const parts = name.trim().split(" ");
@@ -67,17 +65,17 @@ const CustomersTable = ({
             >
               Delete
             </DropdownMenuItem>
-            <DropdownMenuItem
+            {/* <DropdownMenuItem
               onClick={() => onSendMessage(c)}
               className="cursor-pointer"
             >
               Send Message
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
       ),
     }));
-  }, [customers, onDeleteClick, onEditClick, onSendMessage]);
+  }, [customers, onDeleteClick, onEditClick]);
   return <CustomTable headers={headers} data={tableData} />;
 };
 
