@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import PrimaryButton from "../components/PrimaryButton";
-import { Plus, Search } from "lucide-react";
+import { Plus } from "lucide-react";
 import Heading from "../components/Heading";
 
 import AddCustomerModal from "./component/AddCustomerModal";
@@ -16,12 +16,12 @@ import {
 import { useGetCustomersQuery } from "@/hooks/customers/useCustomers";
 
 import { Customer } from "@/hooks/customers/interface";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+
 import CustomerStats from "./component/CustomerStats";
 import CustomersTable from "./component/CustomersTable";
 import DeleteCustomerModal from "./component/DeleteCustomerModal";
 import EditModal from "./component/EditModal";
+import SearchInput from "../components/SearchInput";
 
 const CustomersPage = () => {
   const [IsAddCustomer, setIsAddCustomer] = useState(false);
@@ -73,7 +73,7 @@ const CustomersPage = () => {
     setFilteredCustomers(result);
   };
 
-  // 🔹 Called when "Edit" is clicked from the table
+  //Called when "Edit" is clicked from the table
   const handleEditClick = (customer: Customer) => {
     setSelectedCustomer(customer);
     setIsDialogOpen(true);
@@ -116,21 +116,12 @@ const CustomersPage = () => {
           </div>
         ) : (
           <>
-            <div className="flex w-full sm:w-auto border rounded-md overflow-hidden mb-6">
-              <Input
-                placeholder="Search customers by name, phone, or email..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="border-none outline-none focus:outline-none focus:ring-0 focus:border-transparent rounded-none rounded-l-md "
-              />
-              <Button
-                className="bg-blue-700 rounded-none rounded-r-md px-4"
-                onClick={handleSearch}
-              >
-                <Search />
-              </Button>
-            </div>
-
+            <SearchInput
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              handleSearch={handleSearch}
+              placeholder="Search customers by name, phone, or email..."
+            />
             <div className=" ">
               <CustomersTable
                 customers={
