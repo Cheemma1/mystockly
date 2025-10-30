@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreVertical } from "lucide-react";
 import { Product } from "@/hooks/products/interface";
+import useFormatDate from "@/hooks/useFormatter";
 
 interface CustomersProps {
   products: Product[];
@@ -21,6 +22,7 @@ const ProductTable = ({
   onDeleteClick,
   onEditClick,
 }: CustomersProps) => {
+  const formatDate = useFormatDate();
   const headers = [
     "ProductName",
     "Price",
@@ -37,7 +39,7 @@ const ProductTable = ({
       Quantity: c.stock_quantity,
       description: c.description || "--",
       Category: c.category,
-      Added: new Date(c.created_at).toLocaleDateString(),
+      Added: formatDate(c.created_at),
       Action: (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -62,7 +64,7 @@ const ProductTable = ({
         </DropdownMenu>
       ),
     }));
-  }, [products, onDeleteClick, onEditClick]);
+  }, [products, onDeleteClick, onEditClick, formatDate]);
   return <CustomTable headers={headers} data={tableData} />;
 };
 

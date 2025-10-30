@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MoreVertical } from "lucide-react";
+import useFormatDate from "@/hooks/useFormatter";
 
 interface CustomersProps {
   customers: Customer[];
@@ -28,7 +29,8 @@ const CustomersTable = ({
     return (first + last).toUpperCase();
   };
 
-  const headers = ["Customer", "Email", "Phone", "Address", "Added", "Action"];
+  const formatDate = useFormatDate();
+  const headers = ["Customer", "Email", "Phone", "Location", "Added", "Action"];
 
   const tableData = useMemo(() => {
     return customers.map((c) => ({
@@ -43,8 +45,8 @@ const CustomersTable = ({
 
       Email: c.email,
       Phone: c.phone,
-      Address: c.address,
-      Added: new Date(c.created_at).toLocaleDateString(),
+      Location: c.location,
+      Added: formatDate(c.created_at),
       Action: (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -75,7 +77,7 @@ const CustomersTable = ({
         </DropdownMenu>
       ),
     }));
-  }, [customers, onDeleteClick, onEditClick]);
+  }, [customers, onDeleteClick, onEditClick, formatDate]);
   return <CustomTable headers={headers} data={tableData} />;
 };
 

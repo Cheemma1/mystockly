@@ -56,6 +56,7 @@ const ProductsPage = () => {
 
     setFilteredProduct(result);
   };
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-NG", {
       style: "currency",
@@ -70,7 +71,7 @@ const ProductsPage = () => {
     0
   );
   const lowStockProducts = products.filter(
-    (product) => (product.stock_quantity || 0) <= 5
+    (product) => (product.stock_quantity || 0) <= 10
   ).length;
 
   const handleEditClick = (product: Product) => {
@@ -156,10 +157,11 @@ const ProductsPage = () => {
       </div>
 
       <div className="bg-white p-6 rounded-md ">
-        <div>
-          <h1 className=" md:text-3xl font-bold text-gray-900 mb-2">
-            Products Database
+        <div className="mb-2">
+          <h1 className=" md:text-2xl font-bold text-gray-900 mb-1">
+            Products
           </h1>
+          <p>Manage your product catalog</p>
         </div>
 
         {isLoading ? (

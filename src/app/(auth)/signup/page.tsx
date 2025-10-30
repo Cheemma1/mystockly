@@ -94,7 +94,7 @@ export default function SignupPage() {
         {error && <p className="text-red-500">{error.message}</p>}
       </form>
 
-      <div className="flex items-center gap-2 my-4 px-6">
+      {/* <div className="flex items-center gap-2 my-4 px-6">
         <div className="h-px flex-1 bg-gray-300" />
         <span className="text-xs text-gray-500">OR</span>
         <div className="h-px flex-1 bg-gray-300" />
@@ -107,9 +107,9 @@ export default function SignupPage() {
           //   onClick={handleGoogleLogin}
         >
           {/* <Google size={20} /> */}
-          SignUp with Google
+      {/* SignUp with Google
         </Button>
-      </div>
+      </div> */}
 
       <p className="text-sm text-center text-gray-600 mt-4">
         Already have an account?{" "}

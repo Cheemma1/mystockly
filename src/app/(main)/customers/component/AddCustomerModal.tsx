@@ -10,7 +10,7 @@ const AddCustomerModal = ({ closeModal }: { closeModal: () => void }) => {
     name: "",
     email: "",
     phone: "",
-    address: "",
+    location: "",
     notes: "",
   });
 
@@ -74,12 +74,12 @@ const AddCustomerModal = ({ closeModal }: { closeModal: () => void }) => {
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="address">Address</Label>
+          <Label htmlFor="location">Address</Label>
           <Input
-            id="address"
-            placeholder="Customer address"
-            value={formData.address}
-            onChange={(e) => handleInputChange("address", e.target.value)}
+            id="location"
+            placeholder="Customer location"
+            value={formData.location}
+            onChange={(e) => handleInputChange("location", e.target.value)}
           />
         </div>
         <div className="grid gap-2">

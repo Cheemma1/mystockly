@@ -90,7 +90,7 @@ const LoginPage = () => {
         </Button>
       </form>
 
-      <div className="flex items-center gap-2 my-4 px-6">
+      {/* <div className="flex items-center gap-2 my-4 px-6">
         <div className="h-px flex-1 bg-gray-300" />
         <span className="text-xs text-gray-500">OR</span>
         <div className="h-px flex-1 bg-gray-300" />
@@ -104,7 +104,7 @@ const LoginPage = () => {
         >
           Log in with Google
         </Button>
-      </div>
+      </div> */}
 
       <div className="text-center text-sm">
         Don&apos;t have an account?{" "}
