@@ -91,7 +91,7 @@ const CustomersPage = () => {
           <DialogTrigger asChild>
             <PrimaryButton label="Add Customers" icon={<Plus />} />
           </DialogTrigger>
-          <DialogContent className="max-w-lg">
+          <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto">
             <DialogTitle className="text-lg font-bold">
               Add New Customer
             </DialogTitle>
@@ -105,7 +105,7 @@ const CustomersPage = () => {
 
       <div className="bg-white p-6 rounded-md ">
         <div>
-          <h1 className=" md:text-3xl font-bold text-gray-900 mb-2">
+          <h1 className=" md:text-2xl font-bold text-gray-900 mb-2">
             Customer Database
           </h1>
         </div>
@@ -115,23 +115,24 @@ const CustomersPage = () => {
             <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600" />
           </div>
         ) : (
-          <>
+          <div className="max-w-7xl mx-auto space-y-6">
             <SearchInput
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
               handleSearch={handleSearch}
               placeholder="Search customers by name, phone, or email..."
             />
-            <div className=" ">
-              <CustomersTable
-                customers={
-                  filteredCustomers.length ? filteredCustomers : customers
-                }
-                onDeleteClick={(customer) => setIsDelete(customer)}
-                onEditClick={handleEditClick}
-              />
-            </div>
-          </>
+
+            {/* <div className="-mx-6 md:mx-0"> */}
+            <CustomersTable
+              customers={
+                filteredCustomers.length ? filteredCustomers : customers
+              }
+              onDeleteClick={(customer) => setIsDelete(customer)}
+              onEditClick={handleEditClick}
+            />
+            {/* </div> */}
+          </div>
         )}
       </div>
 

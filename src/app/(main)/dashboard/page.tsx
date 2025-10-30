@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useDashboard } from "@/hooks/dashboard/useDashboard";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 const DashboardPage = () => {
   const router = useRouter();
 
@@ -192,7 +193,7 @@ const DashboardPage = () => {
                 ))
               ) : (
                 <div className="text-center py-4">
-                  <p className="text-gray-600">No customers yet</p>
+                  <p className="text-gray-600">No recent customers yet</p>
                 </div>
               )}
             </div>
@@ -220,13 +221,13 @@ const DashboardPage = () => {
                       {action.description}
                     </p>
                   </div>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="cursor-pointer"
+                  <Link
+                    className="cursor-pointer border rounded-md p-2 hover:border-blue-700"
+                    href={action.path}
                   >
+                    {" "}
                     {action.action}
-                  </Button>
+                  </Link>
                 </div>
               ))}
             </div>

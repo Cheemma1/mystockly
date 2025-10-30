@@ -12,7 +12,7 @@ interface CustomerData {
   name: string;
   email: string;
   phone: string;
-  address: string;
+  location: string;
   notes: string;
 }
 interface EditProps {
@@ -25,7 +25,7 @@ const EditModal = ({ closeModal, customerId }: EditProps) => {
     name: "",
     email: "",
     phone: "",
-    address: "",
+    location: "",
     notes: "",
   });
 
@@ -37,7 +37,7 @@ const EditModal = ({ closeModal, customerId }: EditProps) => {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("customers")
-        .select("name, email, phone, address, notes")
+        .select("name, email, phone, location, notes")
         .eq("id", customerId)
         .single();
 
@@ -96,12 +96,12 @@ const EditModal = ({ closeModal, customerId }: EditProps) => {
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="address">Address</Label>
+          <Label htmlFor="location">Address</Label>
           <Input
-            id="address"
+            id="location"
             placeholder="Customer address"
-            value={formData.address}
-            onChange={(e) => handleInputChange("address", e.target.value)}
+            value={formData.location}
+            onChange={(e) => handleInputChange("location", e.target.value)}
           />
         </div>
         <div className="grid gap-2">
