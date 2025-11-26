@@ -18,12 +18,12 @@ export default function Nav() {
 
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex items-center justify-between p-6 fixed top-0 right-0 left-0 z-50 bg-white shadow-md">
+    <div className="flex items-center justify-between py-6 fixed top-0 right-0 left-0 z-50 bg-white shadow-md  px-4 md:px-[82px]">
       <Link className="text-2xl font-bold text-gray-900 " href="/">
         My<span className="text-blue-600">Stockly</span>
       </Link>
 
-      <div className="hidden md:flex items-center gap-4 ">
+      <div className="hidden md:flex items-center gap-8 ">
         {sections.map((item) => (
           <Link
             href={item.links}

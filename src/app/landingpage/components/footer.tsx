@@ -3,7 +3,7 @@ import { Instagram, Twitter } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="mt-32 bg-gray-900 text-white">
-      <div className=" px-4 md:px-6 py-12">
+      <div className=" px-4 md:px-[82px] py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="md:col-span-2">
