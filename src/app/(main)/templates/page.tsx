@@ -16,7 +16,6 @@ export default function TemplatesPage() {
     GeneratedMessage[]
   >([]);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [totalGenerated, setTotalGenerated] = useState(0);
 
   const handleGenerate = async (data: {
     goal: string;
@@ -48,7 +47,15 @@ export default function TemplatesPage() {
       console.log("API result:", result);
 
       const newMessages: GeneratedMessage[] = result.messages.map(
-        (msg: any, index: number) => ({
+        (
+          msg: {
+            title: string;
+            message: string;
+            tone: string;
+            platform: string;
+          },
+          index: number
+        ) => ({
           id: (Date.now() + index).toString(),
           title: msg.title,
           message: msg.message,
@@ -59,7 +66,7 @@ export default function TemplatesPage() {
       );
 
       setGeneratedMessages((prev) => [...newMessages, ...prev]);
-      setTotalGenerated((prev) => prev + newMessages.length);
+
       toast.success(`Generated ${newMessages.length} messages successfully!`);
     } catch (error) {
       console.error("Error generating messages:", error);
@@ -72,21 +79,6 @@ export default function TemplatesPage() {
       setIsGenerating(false);
     }
   };
-
-  const handleUseTemplate = (template: {
-    title: string;
-    preview: string;
-    category: string;
-  }) => {
-    // You can implement template expansion logic here
-    console.log("Using template:", template);
-  };
-
-  const todayGenerated = generatedMessages.filter((msg) => {
-    const today = new Date().toDateString();
-    const msgDate = new Date(parseInt(msg.id)).toDateString();
-    return today === msgDate;
-  }).length;
 
   return (
     <div className="space-y-6">

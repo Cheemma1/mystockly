@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -48,14 +48,16 @@ const AIMessageForm = ({ onGenerate, isGenerating }: AIMessageFormProps) => {
           Generate AI-Powered Messages
         </CardTitle>
         <CardDescription>
-          Tell us your goal and we'll create personalized messages for your
+          Tell us your goal and we&apos;ll create personalized messages for your
           customers
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="goal">What's the goal of your message? *</Label>
+            <Label htmlFor="goal">
+              What&apos;s the goal of your message? *
+            </Label>
             <textarea
               id="goal"
               placeholder="e.g., Follow up with a customer who bought last week, Promote weekend sale, Introduce new product collection..."

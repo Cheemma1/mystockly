@@ -23,7 +23,7 @@ import { Sale } from "@/hooks/sales/interface";
 export default function SalesPage() {
   const [isRecordSale, setIsRecordSale] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [hasSearched, setHasSearched] = useState(false);
+
   const [filteredSales, setFilteredSales] = useState<Sale[]>([]);
 
   const { sales, loading: salesLoading } = useGetSalesQuery();
@@ -32,8 +32,6 @@ export default function SalesPage() {
   const loading = salesLoading || ordersLoading;
 
   const handleSearch = () => {
-    setHasSearched(true);
-
     const search = searchTerm.trim().toLowerCase();
     if (!search) {
       setFilteredSales(sales);

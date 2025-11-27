@@ -24,7 +24,7 @@ export default function AnalyticsPage() {
   const { sales, loading: salesLoading } = useGetSalesQuery();
   const { orders, loading: ordersLoading } = useGetOrdersQuery();
   const { customers, loading: customersLoading } = useGetCustomersQuery();
-  const { products, isLoading: productsLoading } = useGetProductsQuery();
+  const { isLoading: productsLoading } = useGetProductsQuery();
 
   const loading =
     salesLoading || ordersLoading || customersLoading || productsLoading;
@@ -180,7 +180,7 @@ export default function AnalyticsPage() {
                       axisLine={false}
                     />
                     <Tooltip
-                      formatter={(value: any) => [
+                      formatter={(value: number) => [
                         formatCurrency(value),
                         "Sales",
                       ]}
@@ -243,7 +243,7 @@ export default function AnalyticsPage() {
                       axisLine={false}
                     />
                     <Tooltip
-                      formatter={(value: any) => [
+                      formatter={(value: number) => [
                         formatCurrency(value),
                         "Sales",
                       ]}
