@@ -33,6 +33,7 @@ export default function RootLayout({
         <Toaster position="top-right" richColors />
 
         <Providers> {children}</Providers>
+        <script src="https://js.paystack.co/v1/inline.js" />
       </body>
     </html>
   );
