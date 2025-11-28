@@ -26,8 +26,7 @@ const OrderTable = ({ orders }: CustomersProps) => {
     "Items",
     "Total",
     "Status",
-    "product",
-    "Action",
+    "Product",
   ];
 
   const tableData = useMemo(() => {
@@ -37,30 +36,19 @@ const OrderTable = ({ orders }: CustomersProps) => {
       Items: c.order_items?.length || 0,
       Total: c.total_amount,
       Status: c.status,
+      Product: c.product,
       Date: formatDate(c.created_at),
-      Action: (
-        <div className="flex justify-end gap-2">
-          <Select
-            value={c.status}
-            onValueChange={(status) =>
-              updateOrderStatus({ orderId: c.id, status })
-            }
-          >
-            <SelectTrigger className="w-32">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="pending">Pending</SelectItem>
-              <SelectItem value="processing">Processing</SelectItem>
-              <SelectItem value="completed">Completed</SelectItem>
-              <SelectItem value="cancelled">Cancelled</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      ),
     }));
   }, [orders, updateOrderStatus, formatDate]);
-  return <CustomTable headers={headers} data={tableData} />;
+
+  return (
+    <CustomTable
+      headers={headers}
+      data={tableData}
+      itemsPerPage={10}
+      hideOnMobile={["Items", "Product"]}
+    />
+  );
 };
 
 export default OrderTable;

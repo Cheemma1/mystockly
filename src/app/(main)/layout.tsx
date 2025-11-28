@@ -62,8 +62,7 @@ export default function DashboardLayout({
         </SheetContent>
       </Sheet>
 
-      {/* Main Content */}
-      <div className="flex-1 lg:ml-64">
+      <div className="flex-1 lg:ml-64 overflow-x-auto">
         {/* Mobile Header */}
         <div className="lg:hidden bg-white border-b p-4 flex items-center justify-between">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -84,7 +83,7 @@ export default function DashboardLayout({
         </div>
 
         {/* Page Content */}
-        <main className="p-6">{children}</main>
+        <main className="p-4 md:p-6 overflow-x-auto">{children}</main>
       </div>
     </div>
   );
