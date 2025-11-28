@@ -1,19 +1,32 @@
 declare module "react-paystack" {
-  interface PaystackButtonProps {
-    text?: string;
-    className?: string;
-    children?: React.ReactNode;
-    onSuccess?: (reference: any) => void;
-    onClose?: () => void;
-    reference?: string;
+  export interface PaystackProps {
     email: string;
     amount: number;
     publicKey: string;
-    [key: string]: any;
+    text?: string;
+    onSuccess?: (reference: PaystackReference) => void;
+    onClose?: () => void;
+    metadata?: Record<string, unknown>;
+    currency?: string;
+    reference?: string;
+    channels?: string[];
+    className?: string;
   }
 
-  export const PaystackButton: React.FC<PaystackButtonProps>;
+  export interface PaystackReference {
+    reference: string;
+    trans: string;
+    status: string;
+    message: string;
+    transaction: string;
+    trxref: string;
+  }
+
+  export const PaystackButton: React.ComponentType<PaystackProps>;
   export const usePaystackPayment: (
-    config: any
-  ) => (onSuccess?: Function, onClose?: Function) => void;
+    config: PaystackProps
+  ) => (
+    onSuccess?: (reference: PaystackReference) => void,
+    onClose?: () => void
+  ) => void;
 }

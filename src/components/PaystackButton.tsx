@@ -1,7 +1,16 @@
 "use client";
 
-import { PaystackButton as Paystack } from "react-paystack";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
+
+export interface PaystackReference {
+  reference: string;
+  trans: string;
+  status: string;
+  message: string;
+  transaction: string;
+  trxref: string;
+}
 
 interface PaystackButtonProps {
   amount: number;
@@ -9,9 +18,22 @@ interface PaystackButtonProps {
   plan?: string;
   buttonText?: string;
   className?: string;
-  onSuccess?: (reference: any) => void;
+  onSuccess?: (reference: PaystackReference) => void;
   onClose?: () => void;
 }
+
+// Dynamically import Paystack with no SSR
+const PaystackComponent = dynamic(
+  () => import("react-paystack").then((mod) => mod.PaystackButton),
+  {
+    ssr: false,
+    loading: () => (
+      <Button disabled className="w-full">
+        Loading...
+      </Button>
+    ),
+  }
+);
 
 const PaystackButton = ({
   amount,
@@ -29,7 +51,7 @@ const PaystackButton = ({
     amount: amount * 100, // Paystack expects amount in kobo
     publicKey,
     text: buttonText,
-    onSuccess: (reference: any) => {
+    onSuccess: (reference: PaystackReference) => {
       if (onSuccess) {
         onSuccess(reference);
       }
@@ -49,9 +71,8 @@ const PaystackButton = ({
     );
   }
 
-  // @ts-ignore - react-paystack types might be tricky with the component usage
   return (
-    <Paystack
+    <PaystackComponent
       {...componentProps}
       className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 ${className}`}
     />

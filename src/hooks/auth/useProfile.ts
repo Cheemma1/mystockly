@@ -60,7 +60,7 @@ export const useUpdateProfileMutation = () => {
       toast.success("Profile updated successfully");
       queryClient.invalidateQueries({ queryKey: ["profile", user?.id] });
     },
-    onError: (err: any) => {
+    onError: (err: Error) => {
       toast.error(err.message || "Error updating profile");
     },
   });

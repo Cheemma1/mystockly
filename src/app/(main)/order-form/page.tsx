@@ -20,7 +20,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   Eye,
@@ -35,7 +34,6 @@ import {
 import { toast } from "sonner";
 import { useState } from "react";
 import { useGetProductsQuery } from "@/hooks/products/useProducts";
-import { Product } from "@/hooks/products/interface";
 
 const OrderForm = () => {
   const { products: availableProducts, isLoading: productsLoading } =

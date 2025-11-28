@@ -30,8 +30,7 @@ interface ProfileForm {
 
 const Settings = () => {
   const { user } = useAuth();
-  const { profile: userProfile, loading: isLoadingProfile } =
-    useGetProfileQuery();
+  const { profile: userProfile } = useGetProfileQuery();
   const { updateProfile: updateProfileMutation, isUpdating } =
     useUpdateProfileMutation();
 
@@ -68,25 +67,28 @@ const Settings = () => {
 
   const planFeatures = {
     free: [
-      "Up to 50 customers",
+      " Up to 50 customers",
+      "Basic sales tracking",
+      "Take up to 20 orders/month",
+      "5 AI messages/month",
+      "1 order form",
       "Basic analytics",
-      "Email support",
-      "Order tracking",
-      "Sales tracking",
     ],
     pro: [
-      "100 customers",
+      "Up to 300 customers",
       "Advanced analytics",
-      "Priority support",
-      "AI-powered insights",
-      "Custom templates",
-      "Export data",
+      "Unlimited orders",
+      "50 AI messages",
+      "5 order forms",
+      "Order status tracking",
     ],
     premium: [
-      "Everything in Pro",
-      "Custom integrations",
-      "Dedicated support",
-      "White-label options",
+      "Up to 1,000 customers/unlimited customers",
+      "All Pro features",
+      //   "Multi-user order management",
+      "Custom order fields",
+      "Priority support",
+      "Unlimited order forms",
     ],
   };
 

@@ -1,14 +1,7 @@
 import React, { useMemo } from "react";
 import CustomTable from "../../components/CustomTable";
 import { Order } from "@/hooks/orders/interface";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useUpdateOrderStatusMutation } from "@/hooks/orders/useOrder";
+
 import useFormatDate from "@/hooks/useFormatter";
 
 interface CustomersProps {
@@ -16,8 +9,6 @@ interface CustomersProps {
 }
 
 const OrderTable = ({ orders }: CustomersProps) => {
-  const { updateOrderStatus } = useUpdateOrderStatusMutation();
-
   const formatDate = useFormatDate();
   const headers = [
     "OrderID",
@@ -39,16 +30,8 @@ const OrderTable = ({ orders }: CustomersProps) => {
       Product: c.product,
       Date: formatDate(c.created_at),
     }));
-  }, [orders, updateOrderStatus, formatDate]);
-
-  return (
-    <CustomTable
-      headers={headers}
-      data={tableData}
-      itemsPerPage={10}
-      hideOnMobile={["Items", "Product"]}
-    />
-  );
+  }, [orders, formatDate]);
+  return <CustomTable headers={headers} data={tableData} />;
 };
 
 export default OrderTable;
