@@ -14,6 +14,7 @@ export interface Order {
   customer_phone?: string;
   customer_id?: string;
   status: string;
+  product: string;
   total_amount: number;
   //   payment_ref?: string;
   created_at: string;

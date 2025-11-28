@@ -72,7 +72,7 @@ export default function SalesPage() {
   ).length;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-full">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <Heading
@@ -159,11 +159,9 @@ export default function SalesPage() {
               placeholder="Search sales by customer name or order ID"
             />
 
-            <div className="mt-4">
-              <SalesTable
-                sales={filteredSales.length ? filteredSales : sales}
-              />
-            </div>
+            {/* <div className="mt-4"> */}
+            <SalesTable sales={filteredSales.length ? filteredSales : sales} />
+            {/* </div> */}
           </>
         )}
       </div>
