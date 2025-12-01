@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { supabase } from "@/utils/supabase/client";
 import { useStore } from "@/store/useAuthstore";
 
@@ -61,7 +61,7 @@ export const usePlan = () => {
   const [aiMessageCount, setAIMessageCount] = useState(0);
   const [orderFormCount, setOrderFormCount] = useState(0);
 
-  const fetchUserPlan = async () => {
+  const fetchUserPlan = useCallback(async () => {
     if (!user) {
       setLoading(false);
       return;
@@ -70,7 +70,7 @@ export const usePlan = () => {
     try {
       setLoading(true);
 
-      // Fetch user profile to get plan
+      // Fetch user profile
       const { data: profile, error: profileError } = await supabase
         .from("profiles")
         .select("plan")
@@ -81,54 +81,46 @@ export const usePlan = () => {
       setCurrentPlan(profile?.plan || "free");
 
       // Fetch order count
-      const { count: ordersCount, error: ordersError } = await supabase
+      const { count: ordersCount } = await supabase
         .from("orders")
         .select("*", { count: "exact", head: true })
         .eq("user_id", user.id);
 
-      if (ordersError) throw ordersError;
       setOrderCount(ordersCount || 0);
 
       // Fetch customer count
-      const { count: customersCount, error: customersError } = await supabase
+      const { count: customersCount } = await supabase
         .from("customers")
         .select("*", { count: "exact", head: true })
         .eq("user_id", user.id);
 
-      if (customersError) throw customersError;
       setCustomerCount(customersCount || 0);
 
-      // Fetch AI message count (this month)
+      // AI messages
       const startOfMonth = new Date();
       startOfMonth.setDate(1);
       startOfMonth.setHours(0, 0, 0, 0);
 
-      const { count: aiCount, error: aiError } = await supabase
-        .from("ai_messages") // Adjust table name if different
+      const { count: aiCount } = await supabase
+        .from("ai_messages")
         .select("*", { count: "exact", head: true })
         .eq("user_id", user.id)
         .gte("created_at", startOfMonth.toISOString());
 
-      if (aiError) throw aiError;
       setAIMessageCount(aiCount || 0);
 
-      // Fetch order form count
-      const { count: formsCount, error: formsError } = await supabase
-        .from("order_forms") // Adjust table name if different
+      // Order forms
+      const { count: formsCount } = await supabase
+        .from("order_forms")
         .select("*", { count: "exact", head: true })
         .eq("user_id", user.id);
 
-      if (formsError) throw formsError;
       setOrderFormCount(formsCount || 0);
     } catch (error) {
       console.error("Error fetching plan:", error);
     } finally {
       setLoading(false);
     }
-  };
-
-  useEffect(() => {
-    fetchUserPlan();
   }, [user]);
 
   const limits = PLAN_LIMITS[currentPlan] || PLAN_LIMITS.free;

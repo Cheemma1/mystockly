@@ -4,6 +4,7 @@ import "./globals.css";
 
 import Providers from "./providers";
 import { Toaster } from "sonner";
+import Script from "next/script";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -33,7 +34,10 @@ export default function RootLayout({
         <Toaster position="top-right" richColors />
 
         <Providers> {children}</Providers>
-        <script src="https://js.paystack.co/v1/inline.js" />
+        <Script
+          src="https://js.paystack.co/v1/inline.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
