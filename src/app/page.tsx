@@ -10,6 +10,8 @@ import {
 import Nav from "./landingpage/components/Nav";
 import Footer from "./landingpage/components/footer";
 
+import Script from "next/script";
+
 export default function Home() {
   return (
     <main className="">

@@ -3,14 +3,7 @@ import { useParams } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  MapPin,
-  MessageSquare,
-  Star,
-  Clock,
-  CheckCircle,
-  ArrowLeft,
-} from "lucide-react";
+import { MapPin, MessageSquare, Star, Clock, CheckCircle } from "lucide-react";
 import Link from "next/link";
 
 // This would normally come from your database/API
