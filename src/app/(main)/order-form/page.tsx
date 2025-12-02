@@ -208,8 +208,6 @@ const OrderForm = () => {
     }
   }, [businessSlug]);
 
-  // const dynamicLink = `${window.location.origin}/order-form/${businessSlug}`;
-
   const copyFormLink = () => {
     navigator.clipboard.writeText(dynamicLink);
     toast("Order form link copied to clipboard");
