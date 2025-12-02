@@ -16,6 +16,7 @@ const fetchOrderForm = async (userId: string): Promise<OrderForm | null> => {
 
     if (error) throw error;
     return data;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error("Error fetching order form:", error);
     toast.error(error.message || "Error fetching order form");
@@ -36,7 +37,7 @@ const fetchOrderFormBySlug = async (
 
     if (error) throw error;
     return data;
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error fetching order form by slug:", error);
     throw error;
   }
@@ -109,7 +110,7 @@ export const useCreateOrderFormMutation = () => {
       toast.success("Order form created successfully!");
       queryClient.invalidateQueries({ queryKey: ["orderForm", user?.id] });
     },
-    onError: (err: any) => {
+    onError: (err) => {
       toast.error(err.message || "Error creating order form");
     },
   });
@@ -150,7 +151,7 @@ export const useUpdateOrderFormMutation = () => {
       toast.success("Order form updated successfully!");
       queryClient.invalidateQueries({ queryKey: ["orderForm", user?.id] });
     },
-    onError: (err: any) => {
+    onError: (err) => {
       toast.error(err.message || "Error updating order form");
     },
   });

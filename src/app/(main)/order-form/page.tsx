@@ -132,7 +132,7 @@ const OrderForm = () => {
       return;
     }
 
-    // Check if product already exists in form
+    // Checks if product already exists in form
     if (formData.products.some((p) => p.id === selectedProduct.id)) {
       toast.error("Product already added to order form");
       return;
@@ -199,7 +199,14 @@ const OrderForm = () => {
   const businessSlug = slugify(formData.businessName);
 
   // correct public link (now points to standalone route without navbar/sidebar)
-  const dynamicLink = `${window.location.origin}/order-form/${businessSlug}`;
+
+  const [dynamicLink, setDynamicLink] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setDynamicLink(`${window.location.origin}/order-form/${businessSlug}`);
+    }
+  }, [businessSlug]);
 
   const copyFormLink = () => {
     navigator.clipboard.writeText(dynamicLink);

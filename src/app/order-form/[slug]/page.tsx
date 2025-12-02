@@ -55,8 +55,8 @@ const PublicOrderForm = () => {
               Order Form Not Found
             </h1>
             <p className="text-gray-600 mb-6">
-              The order form you're looking for doesn't exist or has been
-              removed.
+              The order form you&apos;re looking for doesn&apos;t exist or has
+              been removed.
             </p>
             <Link href="/">
               <Button className="bg-blue-600 hover:bg-blue-700">
