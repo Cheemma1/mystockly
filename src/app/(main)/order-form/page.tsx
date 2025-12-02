@@ -32,19 +32,27 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useGetProductsQuery } from "@/hooks/products/useProducts";
+import {
+  useGetOrderFormQuery,
+  useCreateOrderFormMutation,
+  useUpdateOrderFormMutation,
+} from "@/hooks/orderForm/useOrderForm";
 
 const OrderForm = () => {
   const { products: availableProducts, isLoading: productsLoading } =
     useGetProductsQuery();
+  const { orderForm, isLoading: orderFormLoading } = useGetOrderFormQuery();
+  const { createOrderForm, isCreating } = useCreateOrderFormMutation();
+  const { updateOrderForm, isUpdating } = useUpdateOrderFormMutation();
+
   const [open, setOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState<string>("");
 
   const [formData, setFormData] = useState({
     businessName: "",
     bussinessDescription: "",
-    logo: "",
     products: [] as Array<{
       id: string;
       name: string;
@@ -59,11 +67,59 @@ const OrderForm = () => {
       location: "",
     },
   });
-  const handleSaveChanges = (e: React.FormEvent) => {
+
+  // Load existing order form data when it's fetched
+  useEffect(() => {
+    if (orderForm) {
+      setFormData({
+        businessName: orderForm.business_name || "",
+        bussinessDescription: orderForm.business_description || "",
+
+        products: orderForm.products || [],
+        contactInfo: {
+          whatsapp: orderForm.whatsapp || "",
+          instagram: orderForm.instagram || "",
+          location: orderForm.location || "",
+        },
+      });
+    }
+  }, [orderForm]);
+
+  const handleSaveChanges = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    toast("Changes saved successfully!");
-    console.log(formData);
+    if (!formData.businessName.trim()) {
+      toast.error("Business name is required");
+      return;
+    }
+
+    const slug = slugify(formData.businessName);
+
+    const orderFormData = {
+      business_name: formData.businessName,
+      business_description: formData.bussinessDescription,
+
+      slug: slug,
+      products: formData.products,
+      whatsapp: formData.contactInfo.whatsapp,
+      instagram: formData.contactInfo.instagram,
+      location: formData.contactInfo.location,
+    };
+
+    try {
+      if (orderForm?.id) {
+        // Update existing order form
+        updateOrderForm({
+          id: orderForm.id,
+          data: orderFormData,
+        });
+      } else {
+        // Create new order form
+        createOrderForm(orderFormData);
+      }
+    } catch (error) {
+      console.error("Error saving order form:", error);
+    }
   };
 
   const handleAddProduct = () => {
@@ -131,45 +187,6 @@ const OrderForm = () => {
       });
     }
   };
-  // Sample form data
-  // const formData = {
-  //   businessName: "Amaka's Traditional Wears",
-  //   description:
-  //     "Premium African fashion and accessories for the modern Nigerian",
-  //   logo: "/placeholder.svg",
-  //   products: [
-  //     {
-  //       id: 1,
-  //       name: "Premium Ankara Dress",
-  //       price: 15000,
-  //       image: "/placeholder.svg",
-  //       description:
-  //         "Beautiful hand-crafted Ankara dress perfect for special occasions",
-  //       inStock: true,
-  //     },
-  //     {
-  //       id: 2,
-  //       name: "Traditional Agbada Set",
-  //       price: 45000,
-  //       image: "/placeholder.svg",
-  //       description: "Complete traditional Agbada set with cap and accessories",
-  //       inStock: true,
-  //     },
-  //     {
-  //       id: 3,
-  //       name: "Kente Accessories Collection",
-  //       price: 8000,
-  //       image: "/placeholder.svg",
-  //       description: "Beautiful Kente-inspired accessories and jewelry",
-  //       inStock: false,
-  //     },
-  //   ],
-  //   contactInfo: {
-  //     whatsapp: "+234 803 123 4567",
-  //     instagram: "@amakas_wears",
-  //     location: "Onitsha Main Market, Anambra State",
-  //   },
-  // };
 
   const slugify = (text: string) => {
     return text
@@ -181,12 +198,12 @@ const OrderForm = () => {
   // generate slug from business name
   const businessSlug = slugify(formData.businessName);
 
-  // your correct public link
-  const dynamicLink = `https://mystockly.vercel.app/order-form/${businessSlug}`;
+  // correct public link (now points to standalone route without navbar/sidebar)
+  const dynamicLink = `${window.location.origin}/order-form/${businessSlug}`;
 
   const copyFormLink = () => {
     navigator.clipboard.writeText(dynamicLink);
-    toast("Link Copied! 📋 Order form link copied to clipboard");
+    toast("Order form link copied to clipboard");
   };
 
   const shareToWhatsApp = () => {
@@ -307,13 +324,17 @@ const OrderForm = () => {
         </div>
 
         <div className="flex gap-2">
-          <Button variant="outline" onClick={copyFormLink}>
+          <Button
+            variant="outline"
+            onClick={copyFormLink}
+            className="cursor-pointer"
+          >
             <Copy className="mr-2 h-4 w-4" />
             Copy Link
           </Button>
           <Button
             onClick={shareToWhatsApp}
-            className="bg-blue-600 hover:bg-blue-700"
+            className="bg-blue-600  cursor-pointer hover:bg-blue-700"
           >
             <MessageSquare className="mr-2 h-4 w-4" />
             Share on WhatsApp
@@ -446,8 +467,9 @@ const OrderForm = () => {
             <Button
               className="w-full bg-blue-600 hover:bg-blue-700"
               onClick={handleSaveChanges}
+              disabled={isCreating || isUpdating || orderFormLoading}
             >
-              Save Changes
+              {isCreating || isUpdating ? "Saving..." : "Save Changes"}
             </Button>
           </CardContent>
         </Card>
@@ -467,7 +489,7 @@ const OrderForm = () => {
             {/* Mock Phone Frame */}
             <div className="max-w-sm mx-auto bg-white border-4 border-gray-300 rounded-3xl overflow-hidden shadow-lg">
               <div className="bg-gray-100 p-3 text-center text-xs text-gray-600">
-                📱 Customer View
+                Customer View
               </div>
 
               <div className="p-4 space-y-4">

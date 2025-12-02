@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { useDashboard } from "@/hooks/dashboard/useDashboard";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+
 const DashboardPage = () => {
   const router = useRouter();
 
@@ -89,7 +90,7 @@ const DashboardPage = () => {
       <div>
         <h1 className=" text-2xl md:text-3xl font-bold ">Welcome back! </h1>
         <p className="mt-1">
-          Here&apos;s what&apos; happening in your business today.
+          Here&apos;s what&apos;s happening in your business today.
         </p>
       </div>
 
@@ -153,8 +154,8 @@ const DashboardPage = () => {
                   </div>
                 ))
               ) : stats.recentCustomers.length > 0 ? (
-                stats.recentCustomers.map((customer) => (
-                  <>
+                <>
+                  {stats.recentCustomers.map((customer) => (
                     <div
                       key={customer.id}
                       className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
@@ -181,16 +182,16 @@ const DashboardPage = () => {
                         </p>
                       </div>
                     </div>
+                  ))}
 
-                    <Button
-                      variant="outline"
-                      className="w-full mt-4 cursor-pointer"
-                      onClick={() => router.push("/customers")}
-                    >
-                      View All Customers
-                    </Button>
-                  </>
-                ))
+                  <Button
+                    variant="outline"
+                    className="w-full mt-4 cursor-pointer"
+                    onClick={() => router.push("/customers")}
+                  >
+                    View All Customers
+                  </Button>
+                </>
               ) : (
                 <div className="text-center py-4">
                   <p className="text-gray-600">No recent customers yet</p>

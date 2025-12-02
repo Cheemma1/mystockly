@@ -97,7 +97,7 @@ export const useDashboard = () => {
       if (!user?.id) throw new Error();
       return fetchDashboardStats(user.id);
     },
-    enabled: !user?.id,
+    enabled: !!user?.id,
   });
 
   // Return the data in the same shape as our original useDashboard
