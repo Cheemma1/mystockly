@@ -3,9 +3,10 @@ import { useParams } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, MessageSquare, Star, Clock, CheckCircle } from "lucide-react";
+import { MapPin, Clock, CheckCircle, Instagram } from "lucide-react";
 import Link from "next/link";
 import { useGetOrderFormBySlugQuery } from "@/hooks/orderForm/useOrderForm";
+import Image from "next/image";
 
 const PublicOrderForm = () => {
   const params = useParams();
@@ -85,8 +86,8 @@ const PublicOrderForm = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <Card className="max-w-sm mx-auto bg-white border-4 border-gray-300 rounded-3xl w-fulloverflow-hidden shadow-lg">
-          <CardContent className="p-6 md:p-8">
+        <Card className="max-w-sm mx-auto bg-white border-4 border-gray-300 rounded-3xl w-full overflow-hidden shadow-lg">
+          <CardContent className="p-2 md:p-8">
             {/* Business Header */}
             <div className="text-center space-y-4 mb-8">
               <div className="w-24 h-24 bg-blue-700 rounded-full mx-auto flex items-center justify-center text-white text-3xl font-bold shadow-lg">
@@ -110,9 +111,7 @@ const PublicOrderForm = () => {
 
             {/* Products Section */}
             <div className="space-y-3 w-full">
-              <h2 className="text-xl font-semibold text-gray-900">
-                Our Products
-              </h2>
+              <h2 className="font-semibold text-gray-900">Our Products</h2>
 
               {formData.products.length === 0 ? (
                 <div className="text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300 w-full">
@@ -130,43 +129,40 @@ const PublicOrderForm = () => {
                       key={product.id}
                       className="border rounded-lg p-3 space-y-2"
                     >
-                      <div className="p-4 space-y-3">
-                        <div className="flex justify-between items-start">
-                          <h3 className="font-semibold text-lg">
-                            {product.name}
-                          </h3>
-                          <span className="font-bold text-blue-600 text-lg">
-                            {formatCurrency(product.price)}
-                          </span>
-                        </div>
-                        <p className="text-sm text-gray-600">
-                          {product.description}
-                        </p>
-                        <div className="flex justify-between items-center pt-2">
-                          <Badge
-                            variant={product.inStock ? "default" : "secondary"}
-                          >
-                            {product.inStock ? (
-                              <>
-                                <CheckCircle className="h-3 w-3 mr-1" />
-                                Available
-                              </>
-                            ) : (
-                              <>
-                                <Clock className="h-3 w-3 mr-1" />
-                                Out of Stock
-                              </>
-                            )}
-                          </Badge>
-                          {product.inStock && (
-                            <Button
-                              onClick={() => handleWhatsAppOrder(product.name)}
-                              className="bg-blue-600 hover:bg-blue-700 cursor-pointer"
-                            >
-                              Order Now
-                            </Button>
+                      {/* <div className="p-4 space-y-1"> */}
+                      <div className="flex justify-between items-start">
+                        <h3 className="font-medium text-sm">{product.name}</h3>
+                        <span className="font-bold text-blue-600 text-sm">
+                          {formatCurrency(product.price)}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600">
+                        {product.description}
+                      </p>
+                      <div className="flex justify-between items-center pt-2">
+                        <Badge
+                          variant={product.inStock ? "default" : "secondary"}
+                        >
+                          {product.inStock ? (
+                            <>
+                              <CheckCircle className="h-3 w-3 mr-1" />
+                              Available
+                            </>
+                          ) : (
+                            <>
+                              <Clock className="h-3 w-3 mr-1" />
+                              Out of Stock
+                            </>
                           )}
-                        </div>
+                        </Badge>
+                        {product.inStock && (
+                          <Button
+                            onClick={() => handleWhatsAppOrder(product.name)}
+                            className="bg-blue-600 hover:bg-blue-700 cursor-pointer"
+                          >
+                            Order Now
+                          </Button>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -185,6 +181,7 @@ const PublicOrderForm = () => {
               <div className="flex flex-wrap gap-3">
                 {formData.contactInfo.whatsapp && (
                   <Button
+                    variant="outline"
                     onClick={() =>
                       window.open(
                         `https://wa.me/${formData.contactInfo.whatsapp.replace(
@@ -194,10 +191,15 @@ const PublicOrderForm = () => {
                         "_blank"
                       )
                     }
-                    className="bg-blue-600 hover:bg-blue-700 cursor-pointer"
+                    className=" cursor-pointer w-full"
                   >
-                    <MessageSquare className="h-4 w-4 mr-2" />
-                    WhatsApp: {formData.contactInfo.whatsapp}
+                    <Image
+                      src="/whatsapp-logo-.svg"
+                      alt="WhatsApp"
+                      width={20}
+                      height={20}
+                    />
+                    {formData.contactInfo.whatsapp}
                   </Button>
                 )}
                 {formData.contactInfo.instagram && (
@@ -212,10 +214,10 @@ const PublicOrderForm = () => {
                       )
                     }
                     variant="outline"
-                    className="cursor-pointer"
+                    className="cursor-pointer w-full"
                   >
-                    <Star className="h-4 w-4 mr-2" />
-                    Instagram: {formData.contactInfo.instagram}
+                    <Instagram className="h-4 w-4 " />
+                    {formData.contactInfo.instagram}
                   </Button>
                 )}
               </div>

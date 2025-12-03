@@ -81,7 +81,7 @@ const CustomersPage = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col md:flex-row  md:items-center md:justify-between ">
+      <div className="flex flex-col md:flex-row  md:items-center md:justify-between  items-start gap-4">
         <Heading
           headingText="Customers"
           paraText="Manage your customer relationships and track their journey"

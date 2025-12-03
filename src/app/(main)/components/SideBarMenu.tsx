@@ -45,12 +45,12 @@ const SidebarContent = ({ getIni, setIsOpen }: SidebarContentProps) => {
     { id: "orders", label: "Orders", icon: ShoppingCart, path: "/orders" },
     { id: "sales", label: "Sales", icon: TrendingUp, path: "/sales" },
 
-    {
-      id: "templates",
-      label: "Templates",
-      icon: MessageSquare,
-      path: "/templates",
-    },
+    // {
+    //   id: "templates",
+    //   label: "Templates",
+    //   icon: MessageSquare,
+    //   path: "/templates",
+    // },
     {
       id: "order-form",
       label: "Order Form",
