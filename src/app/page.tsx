@@ -10,7 +10,6 @@ import {
 import Nav from "./landingpage/components/Nav";
 import Footer from "./landingpage/components/footer";
 
-
 export default function Home() {
   return (
     <main className="">
@@ -61,12 +60,11 @@ export default function Home() {
             Why Stockly Stands Out
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto text-center">
-            MyStockly simplifies customer management, sales tracking, and AI
-            messaging in one place. Gain insights, save time, and grow your
-            business faster.
+            MyStockly simplifies customer management, sales tracking all in one
+            place. Gain insights, save time, and grow your business faster.
           </p>
         </div>
-        <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-8  py-12">
+        <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-8  py-12">
           <div className="bg-ccc shadow-sm hover:shadow-lg transition-shadow p-6 ">
             <Users className="h-10 w-10 text-blue-600 mb-4 " />
             <h3 className="font-semibold text-gray-900 mb-2">
@@ -84,14 +82,14 @@ export default function Home() {
               Record daily sales and monitor revenue growth
             </p>
           </div>
-
+          {/* 
           <div className="bg-ccc p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
             <MessageSquare className="h-8 w-8 text-blue-500 mb-4 " />
             <h3 className="font-semibold text-gray-900 mb-2">AI Messages</h3>
             <p className="text-gray-600 text-sm">
               Generate WhatsApp & IG captions with AI
             </p>
-          </div>
+          </div> */}
 
           <div className=" bg-ccc p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
             <BarChart3 className="h-8 w-8 text-purple-500 mb-4" />
@@ -183,7 +181,7 @@ export default function Home() {
             Choose a plan that fits your business size and budget
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-6 md:max-w-4xl mx-auto px-4 md:px-0">
+        <div className="grid md:grid-cols-2 gap-6 md:max-w-4xl mx-auto px-4 md:px-0">
           <div className="bg-white p-6 rounded-xl shadow-md border">
             <h3 className="font-bold text-lg text-gray-900 mb-2">Starter</h3>
             <p className="text-gray-600 text-sm mb-4">
@@ -195,19 +193,20 @@ export default function Home() {
             <ul className="space-y-3 mb-6">
               <li className="flex items-center text-sm">
                 <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
-                Up to 100 customers
+                Up to 50 customers
               </li>
               <li className="flex items-center text-sm">
                 <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
-                Basic sales tracking
+                Up to 20 orders/month
               </li>
+
               <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />5 AI
-                messages/month
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" /> order
+                form
               </li>
               <li className="flex items-center text-sm">
                 <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
-                Order form
+                Basic analytics
               </li>
             </ul>
             <Button
@@ -229,43 +228,7 @@ export default function Home() {
               Best for growing businesses
             </p>
             <div className="mb-6">
-              <span className="text-3xl font-bold text-gray-900">₦5,000</span>
-              <span className="text-gray-600">/month</span>
-            </div>
-            <ul className="space-y-3 mb-6">
-              <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
-                Up to 1,000 customers
-              </li>
-              <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
-                Advanced analytics
-              </li>
-              <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
-                Unlimited AI messages
-              </li>
-              <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />5 order
-                forms
-              </li>
-              <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
-                WhatsApp integration
-              </li>
-            </ul>
-            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white cursor-pointer">
-              Choose Pro
-            </Button>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md border">
-            <h3 className="font-bold text-lg text-gray-900 mb-2">Enterprise</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              For established businesses
-            </p>
-            <div className="mb-6">
-              <span className="text-3xl font-bold text-gray-900">₦10,000</span>
+              <span className="text-3xl font-bold text-gray-900">₦3,500</span>
               <span className="text-gray-600">/month</span>
             </div>
             <ul className="space-y-3 mb-6">
@@ -275,26 +238,29 @@ export default function Home() {
               </li>
               <li className="flex items-center text-sm">
                 <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
-                Advanced AI features
+                Unlimited orders
+              </li>
+
+              <li className="flex items-center text-sm">
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
+                Advanced analytics
+              </li>
+
+              <li className="flex items-center text-sm">
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
+                Low-stock notification
+              </li>
+              <li className="flex items-center text-sm">
+                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
+                Export Analytics Data
               </li>
               <li className="flex items-center text-sm">
                 <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
                 Priority support
               </li>
-              <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
-                Unlimited Order Form
-              </li>
-              <li className="flex items-center text-sm">
-                <CheckCircle className="h-4 w-4 text-blue-600 mr-2" />
-                WhatsApp integration
-              </li>
             </ul>
-            <Button
-              variant="outline"
-              className="w-full border-blue-600 text-blue-600 hover:bg-ccc cursor-pointer"
-            >
-              Choose Enterprise
+            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white cursor-pointer">
+              Choose Pro
             </Button>
           </div>
         </div>
