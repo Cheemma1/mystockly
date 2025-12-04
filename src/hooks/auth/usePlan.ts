@@ -28,7 +28,7 @@ const PLAN_LIMITS: Record<string, PlanLimits> = {
     hasPrioritySupport: false,
   },
   pro: {
-    maxCustomers: 300,
+    maxCustomers: null, // unlimited
     maxOrders: null, // unlimited
     maxAIMessages: null, // unlimited
     maxOrderForms: 5,
@@ -36,19 +36,7 @@ const PLAN_LIMITS: Record<string, PlanLimits> = {
     hasOrderStatusTracking: true,
     // hasMultiUserManagement: false,
     // hasCustomOrderFields: false,
-    hasPrioritySupport: false,
-  },
-  enterprise: {
-    maxCustomers: null,
-    maxOrders: null, // unlimited
-    maxAIMessages: null, // unlimited
-    maxOrderForms: 999, // unlimited (using high number)
-    hasAdvancedAnalytics: true,
-    hasOrderStatusTracking: true,
-    // hasMultiUserManagement: true,
-    // hasCustomOrderFields: true,
     hasPrioritySupport: true,
-    // hasAutomatedNotifications: true,
   },
 };
 

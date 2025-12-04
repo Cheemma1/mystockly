@@ -63,6 +63,12 @@ const SidebarContent = ({ getIni, setIsOpen }: SidebarContentProps) => {
       icon: BarChart3,
       path: "/analytics",
     },
+    {
+      id: "insights",
+      label: "AI-Insights",
+      icon: MessageSquare,
+      path: "/insights",
+    },
     { id: "settings", label: "Settings", icon: Settings, path: "/settings" },
   ];
   return (

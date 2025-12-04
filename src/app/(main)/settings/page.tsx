@@ -67,28 +67,21 @@ const Settings = () => {
 
   const planFeatures = {
     free: [
-      " Up to 50 customers",
-      "Basic sales tracking",
-      "Take up to 20 orders/month",
+      "Up to 50 customers",
+      "Up to 20 orders/month",
       "5 AI messages/month",
       "1 order form",
       "Basic analytics",
     ],
     pro: [
-      "Up to 300 customers",
-      "Advanced analytics",
+      "Unlimited customers",
       "Unlimited orders",
-      "50 AI messages",
+      "Unlimited AI messages",
       "5 order forms",
-      "Order status tracking",
-    ],
-    premium: [
-      "Up to 1,000 customers/unlimited customers",
-      "All Pro features",
-      //   "Multi-user order management",
-      "Custom order fields",
+      "Advanced analytics",
+      "low-stock notification",
+      "Export Analytics Data",
       "Priority support",
-      "Unlimited order forms",
     ],
   };
 
@@ -179,8 +172,6 @@ const Settings = () => {
                   <p className="text-gray-600">
                     {profile.plan === "free" && "Perfect for getting started"}
                     {profile.plan === "pro" && "Great for growing businesses"}
-                    {profile.plan === "premium" &&
-                      "Advanced features for enterprises"}
                   </p>
                 </div>
                 <Badge
@@ -192,7 +183,7 @@ const Settings = () => {
 
               <div>
                 <h3 className="text-lg font-semibold mb-4">Available Plans</h3>
-                <div className="grid md:grid-cols-3 gap-4">
+                <div className="grid md:grid-cols-2 gap-4">
                   {Object.entries(planFeatures).map(([planName, features]) => (
                     <Card
                       key={planName}
@@ -204,8 +195,7 @@ const Settings = () => {
                         <CardTitle className="capitalize">{planName}</CardTitle>
                         <div className="text-2xl font-bold">
                           {planName === "free" && "₦0"}
-                          {planName === "pro" && "₦5,000"}
-                          {planName === "premium" && "₦15,000"}
+                          {planName === "pro" && "₦3,500"}
                           <span className="text-sm font-normal text-gray-600">
                             /month
                           </span>
